@@ -11,9 +11,6 @@
 		5C581F2A2AB47EB1006F94D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C581F292AB47EB1006F94D1 /* ContentView.swift */; };
 		5C581F2C2AB47EB3006F94D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C581F2B2AB47EB3006F94D1 /* Assets.xcassets */; };
 		5C581F2F2AB47EB3006F94D1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C581F2E2AB47EB3006F94D1 /* Preview Assets.xcassets */; };
-		5C581F392AB47EB4006F94D1 /* Swifty_ReminderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C581F382AB47EB4006F94D1 /* Swifty_ReminderTests.swift */; };
-		5C581F432AB47EB4006F94D1 /* Swifty_ReminderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C581F422AB47EB4006F94D1 /* Swifty_ReminderUITests.swift */; };
-		5C581F452AB47EB4006F94D1 /* Swifty_ReminderUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C581F442AB47EB4006F94D1 /* Swifty_ReminderUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,10 +37,7 @@
 		5C581F2B2AB47EB3006F94D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C581F2E2AB47EB3006F94D1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5C581F342AB47EB4006F94D1 /* Swifty ReminderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Swifty ReminderTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5C581F382AB47EB4006F94D1 /* Swifty_ReminderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swifty_ReminderTests.swift; sourceTree = "<group>"; };
 		5C581F3E2AB47EB4006F94D1 /* Swifty ReminderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Swifty ReminderUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5C581F422AB47EB4006F94D1 /* Swifty_ReminderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swifty_ReminderUITests.swift; sourceTree = "<group>"; };
-		5C581F442AB47EB4006F94D1 /* Swifty_ReminderUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swifty_ReminderUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,8 +69,6 @@
 			isa = PBXGroup;
 			children = (
 				5C581F262AB47EB1006F94D1 /* Swifty Reminder */,
-				5C581F372AB47EB4006F94D1 /* Swifty ReminderTests */,
-				5C581F412AB47EB4006F94D1 /* Swifty ReminderUITests */,
 				5C581F252AB47EB1006F94D1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -108,23 +100,6 @@
 				5C581F2E2AB47EB3006F94D1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		5C581F372AB47EB4006F94D1 /* Swifty ReminderTests */ = {
-			isa = PBXGroup;
-			children = (
-				5C581F382AB47EB4006F94D1 /* Swifty_ReminderTests.swift */,
-			);
-			path = "Swifty ReminderTests";
-			sourceTree = "<group>";
-		};
-		5C581F412AB47EB4006F94D1 /* Swifty ReminderUITests */ = {
-			isa = PBXGroup;
-			children = (
-				5C581F422AB47EB4006F94D1 /* Swifty_ReminderUITests.swift */,
-				5C581F442AB47EB4006F94D1 /* Swifty_ReminderUITestsLaunchTests.swift */,
-			);
-			path = "Swifty ReminderUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,7 +241,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C581F392AB47EB4006F94D1 /* Swifty_ReminderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,8 +248,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C581F452AB47EB4006F94D1 /* Swifty_ReminderUITestsLaunchTests.swift in Sources */,
-				5C581F432AB47EB4006F94D1 /* Swifty_ReminderUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
