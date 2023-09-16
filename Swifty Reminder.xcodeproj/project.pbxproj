@@ -11,6 +11,12 @@
 		5C581F2A2AB47EB1006F94D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C581F292AB47EB1006F94D1 /* ContentView.swift */; };
 		5C581F2C2AB47EB3006F94D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C581F2B2AB47EB3006F94D1 /* Assets.xcassets */; };
 		5C581F2F2AB47EB3006F94D1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C581F2E2AB47EB3006F94D1 /* Preview Assets.xcassets */; };
+		5C581F532AB49C11006F94D1 /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C581F522AB49C11006F94D1 /* CoreDataProvider.swift */; };
+		5C581F562AB58E52006F94D1 /* RemindersModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C581F542AB58E52006F94D1 /* RemindersModel.xcdatamodeld */; };
+		5C581F592AB5CD15006F94D1 /* MyList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C581F582AB5CD15006F94D1 /* MyList+CoreDataClass.swift */; };
+		5C581F5B2AB5CD3F006F94D1 /* MyList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C581F5A2AB5CD3F006F94D1 /* MyList+CoreDataProperties.swift */; };
+		5C581F5E2AB5D124006F94D1 /* AddNewListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C581F5D2AB5D124006F94D1 /* AddNewListView.swift */; };
+		5C581F602AB5F331006F94D1 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C581F5F2AB5F331006F94D1 /* ColorPickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +44,12 @@
 		5C581F2E2AB47EB3006F94D1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5C581F342AB47EB4006F94D1 /* Swifty ReminderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Swifty ReminderTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C581F3E2AB47EB4006F94D1 /* Swifty ReminderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Swifty ReminderUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C581F522AB49C11006F94D1 /* CoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProvider.swift; sourceTree = "<group>"; };
+		5C581F552AB58E52006F94D1 /* RemindersModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RemindersModel.xcdatamodel; sourceTree = "<group>"; };
+		5C581F582AB5CD15006F94D1 /* MyList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyList+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5C581F5A2AB5CD3F006F94D1 /* MyList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyList+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5C581F5D2AB5D124006F94D1 /* AddNewListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewListView.swift; sourceTree = "<group>"; };
+		5C581F5F2AB5F331006F94D1 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,10 +98,13 @@
 		5C581F262AB47EB1006F94D1 /* Swifty Reminder */ = {
 			isa = PBXGroup;
 			children = (
+				5C581F5C2AB5D0F8006F94D1 /* Views */,
+				5C581F572AB5CCC5006F94D1 /* Models */,
+				5C581F512AB49BEC006F94D1 /* Providers */,
 				5C581F272AB47EB1006F94D1 /* Swifty_ReminderApp.swift */,
-				5C581F292AB47EB1006F94D1 /* ContentView.swift */,
 				5C581F2B2AB47EB3006F94D1 /* Assets.xcassets */,
 				5C581F2D2AB47EB3006F94D1 /* Preview Content */,
+				5C581F542AB58E52006F94D1 /* RemindersModel.xcdatamodeld */,
 			);
 			path = "Swifty Reminder";
 			sourceTree = "<group>";
@@ -100,6 +115,33 @@
 				5C581F2E2AB47EB3006F94D1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5C581F512AB49BEC006F94D1 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				5C581F522AB49C11006F94D1 /* CoreDataProvider.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		5C581F572AB5CCC5006F94D1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5C581F582AB5CD15006F94D1 /* MyList+CoreDataClass.swift */,
+				5C581F5A2AB5CD3F006F94D1 /* MyList+CoreDataProperties.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5C581F5C2AB5D0F8006F94D1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5C581F292AB47EB1006F94D1 /* ContentView.swift */,
+				5C581F5D2AB5D124006F94D1 /* AddNewListView.swift */,
+				5C581F5F2AB5F331006F94D1 /* ColorPickerView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,8 +274,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C581F602AB5F331006F94D1 /* ColorPickerView.swift in Sources */,
 				5C581F2A2AB47EB1006F94D1 /* ContentView.swift in Sources */,
+				5C581F562AB58E52006F94D1 /* RemindersModel.xcdatamodeld in Sources */,
 				5C581F282AB47EB1006F94D1 /* Swifty_ReminderApp.swift in Sources */,
+				5C581F5B2AB5CD3F006F94D1 /* MyList+CoreDataProperties.swift in Sources */,
+				5C581F5E2AB5D124006F94D1 /* AddNewListView.swift in Sources */,
+				5C581F592AB5CD15006F94D1 /* MyList+CoreDataClass.swift in Sources */,
+				5C581F532AB49C11006F94D1 /* CoreDataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,6 +603,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5C581F542AB58E52006F94D1 /* RemindersModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5C581F552AB58E52006F94D1 /* RemindersModel.xcdatamodel */,
+			);
+			currentVersion = 5C581F552AB58E52006F94D1 /* RemindersModel.xcdatamodel */;
+			path = RemindersModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5C581F1C2AB47EB1006F94D1 /* Project object */;
 }
