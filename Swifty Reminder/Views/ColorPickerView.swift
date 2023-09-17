@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ColorPickerView: View {
     
-    @State var selectedColor : Color
+    @Binding var selectedColor : Color
     
     let colors : [Color] = [.red, .orange, .yellow, .green, .blue, .purple, .pink]
     
@@ -39,9 +39,11 @@ struct ColorPickerView: View {
 }
 
 struct ColorPickerView_Previews: PreviewProvider {
+
+    @State static var color: Color = .red
     static var previews: some View {
-        ColorPickerView(selectedColor: Color.yellow)
-            .previewLayout(.sizeThatFits)
+        ColorPickerView(selectedColor: $color)
+            
         
     }
 }

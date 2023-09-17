@@ -12,6 +12,7 @@ struct AddNewListView: View {
     @State var selectedColor : Color = .red
     @State var name : String = ""
     @Environment(\.dismiss) private var dismiss
+    @State var onSave: (String, UIColor)-> Void
     
     private var isFormValid : Bool {
         name.trimmingCharacters(in: .whitespaces).isEmpty
@@ -28,11 +29,12 @@ struct AddNewListView: View {
                 TextField("Name", text: $name)
                     .textFieldStyle(.roundedBorder)
                     .multilineTextAlignment(.center)
+                    .autocorrectionDisabled()
                 
             }
             .padding(30)
             .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-            ColorPickerView(selectedColor: selectedColor)
+            ColorPickerView(selectedColor: $selectedColor)
             
             Spacer()
         }
@@ -52,7 +54,8 @@ struct AddNewListView: View {
             }
             ToolbarItem(placement: .navigationBarTrailing){
                 Button {
-                    //Save Action for the list
+                    onSave(name, UIColor(selectedColor))
+                    dismiss()
                 } label: {
                     Text("Done")
                 }
@@ -66,7 +69,7 @@ struct AddNewListView: View {
 struct AddNewListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AddNewListView()
+            AddNewListView(onSave: {(_, _) in })
         }
         
     }

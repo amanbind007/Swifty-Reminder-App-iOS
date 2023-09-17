@@ -12,6 +12,7 @@ struct Swifty_ReminderApp: App {
     var body: some Scene {
         WindowGroup {
             HomeView()
+                .environment(\.managedObjectContext, CoreDataProvider.shared.persistentContainer.viewContext)
         }
     }
 }
