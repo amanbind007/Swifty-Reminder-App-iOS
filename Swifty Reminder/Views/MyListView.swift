@@ -12,20 +12,29 @@ struct MyListView: View {
     
     var body: some View {
         
-        NavigationStack{
+        NavigationView {
+            
             if myLists.isEmpty {
-                Text("No Reminders Found")
-            }
-            else{
-                ForEach(myLists) { listItem in
-                    VStack{
-                        MyListCellView(myList: listItem)
-                            .padding(.horizontal)
-                        Divider()
+                Spacer()
+                Text("No reminders found")
+            } else {
+                ForEach(myLists) { myList in
+                    NavigationLink(value: myList) {
+                        VStack {
+                            MyListCellView(myList: myList)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding([.leading], 10)
+                                .font(.title3)
+                            Divider()
+                        }
                     }
-                }
-                
+                }.scrollContentBackground(.hidden)
+                    .navigationDestination(for: MyList.self) { myList in
+                        MyListDetailView(myList: myList)
+                            .navigationTitle(myList.name)
+                    }
             }
+            
         }
         
         

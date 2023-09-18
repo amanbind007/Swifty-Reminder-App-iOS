@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     
     @FetchRequest(sortDescriptors: []) private var myListResult: FetchedResults<MyList>
+    
     @State var isPresented: Bool = false
     
     
@@ -32,7 +33,7 @@ struct HomeView: View {
                 .padding()
 
             }.sheet(isPresented: $isPresented) {
-                NavigationStack{
+                NavigationView{
                     AddNewListView { name, color in
                         //Code to save
                         do {

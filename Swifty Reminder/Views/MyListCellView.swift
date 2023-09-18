@@ -19,12 +19,15 @@ struct MyListCellView: View {
             Text(myList.name)
             Spacer()
             Image(systemName: "chevron.right")
+                .foregroundColor(.gray)
+                .opacity(0.4)
+                .padding([.trailing], 10)
         }
     }
 }
 
-//struct MyListCellView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MyListCellView()
-//    }
-//}
+struct MyListCellView_Previews: PreviewProvider {
+    static var previews: some View {
+        MyListCellView(myList: PreviewData.myList)
+    }
+}
