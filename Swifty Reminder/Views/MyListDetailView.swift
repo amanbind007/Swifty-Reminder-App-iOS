@@ -1,64 +1,56 @@
 //
 //  MyListDetailView.swift
-//  Swifty Reminder
+//  RemindersApp
 //
-//  Created by Aman Bind on 18/09/23.
+//  Created by Mohammad Azam on 1/21/23.
 //
 
 import SwiftUI
 
 struct MyListDetailView: View {
     
-    @State var openAddReminder = false
-    @State var title : String = ""
-    @FetchRequest(sortDescriptors: []) var reminderResults : FetchedResults<Reminder>
-    
     let myList: MyList
-
-    private var isFormValid : Bool {
-        return title.trimmingCharacters(in: .whitespaces).isEmpty
+    @State private var openAddReminder: Bool = false
+    @State private var title: String = ""
+    
+    @FetchRequest(sortDescriptors: [])
+    private var reminderResults: FetchedResults<Reminder>
+    
+    private var isFormValid: Bool {
+        !title.isEmpty
     }
     
-    
-    init(myList: MyList){
+    init(myList: MyList) {
         self.myList = myList
         _reminderResults = FetchRequest(fetchRequest: ReminderService.getRemindersByList(myList: myList))
     }
     
     var body: some View {
-        
-        VStack{
-            
-            //Displaying Reminders Here
+        VStack {
+                
+            // Display List of Reminders
             ReminderListView(reminders: reminderResults)
             
-            HStack{
+            HStack {
                 Image(systemName: "plus.circle.fill")
-                    .foregroundColor(.blue)
-                Button("Add Reminder") {
+                Button("New Reminder") {
                     openAddReminder = true
                 }
-            }
-            
-             
-        }
-        .alert("New Reminder", isPresented: $openAddReminder) {
-            TextField("Enter Title", text: $title)
-            Button("Cancel", role: .cancel) {}
+            }.foregroundColor(.blue)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding()
+        }.alert("New Reminder", isPresented: $openAddReminder) {
+            TextField("", text: $title)
+            Button("Cancel", role: .cancel) { }
             Button("Done") {
                 if isFormValid {
-                    //Save reminder to list
-                    
-                    do{
+                    do {
                         try ReminderService.saveReminderToMyList(myList: myList, reminderTitle: title)
-                    }
-                    catch{
+                    } catch {
                         print(error.localizedDescription)
                     }
                 }
             }
-            
-            
         }
     }
 }

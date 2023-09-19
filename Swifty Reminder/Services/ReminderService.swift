@@ -1,17 +1,17 @@
 //
 //  ReminderService.swift
-//  Swifty Reminder
+//  RemindersApp
 //
-//  Created by Aman Bind on 17/09/23.
+//  Created by Mohammad Azam on 1/20/23.
 //
 
 import Foundation
 import CoreData
 import UIKit
 
-
-class ReminderService{
-    static var viewContext : NSManagedObjectContext{
+class ReminderService {
+    
+    static var viewContext: NSManagedObjectContext {
         CoreDataProvider.shared.persistentContainer.viewContext
     }
     
@@ -26,21 +26,18 @@ class ReminderService{
         try save()
     }
     
-    static func saveReminderToMyList(myList: MyList, reminderTitle: String) throws{
+    static func saveReminderToMyList(myList: MyList, reminderTitle: String) throws {
         let reminder = Reminder(context: viewContext)
         reminder.title = reminderTitle
         myList.addToReminders(reminder)
-        try save()
-        
+        try save() 
     }
     
-
     static func getRemindersByList(myList: MyList) -> NSFetchRequest<Reminder> {
         let request = Reminder.fetchRequest()
         request.sortDescriptors = []
         request.predicate = NSPredicate(format: "list = %@ AND isCompleted = false", myList)
         return request
     }
-    
     
 }

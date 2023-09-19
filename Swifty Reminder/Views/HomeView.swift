@@ -1,63 +1,53 @@
 //
 //  ContentView.swift
-//  Swifty Reminder
+//  RemindersApp
 //
-//  Created by Aman Bind on 15/09/23.
+//  Created by Mohammad Azam on 1/19/23.
 //
 
 import SwiftUI
 
 struct HomeView: View {
     
-    @FetchRequest(sortDescriptors: []) private var myListResult: FetchedResults<MyList>
+    @FetchRequest(sortDescriptors: [])
+    private var myListResults: FetchedResults<MyList>
     
-    @State var isPresented: Bool = false
-    
+    @State private var isPresented: Bool = false
     
     var body: some View {
         NavigationStack {
-            
-            VStack{
+            VStack {
                 
-                MyListView(myLists: myListResult)
-                    .padding()
-                    
+                MyListView(myLists: myListResults)
+            
+                //Spacer()
                 
                 Button {
                     isPresented = true
                 } label: {
                     Text("Add List")
                         .frame(maxWidth: .infinity, alignment: .trailing)
-                        .font(.subheadline)
-                }
-                .padding()
-
+                        .font(.headline)
+                }.padding()
             }.sheet(isPresented: $isPresented) {
-                NavigationView{
+                NavigationView {
                     AddNewListView { name, color in
-                        //Code to save
                         do {
                             try ReminderService.saveMyList(name, color)
-                        }
-                        catch{
+                        } catch {
                             print(error)
                         }
-                        
-                        
-                        
                     }
                 }
-                
             }
-            
         }
-        
+        .padding()
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
-            .environment(\.managedObjectContext, CoreDataProvider.shared.persistentContainer.viewContext )
+            .environment(\.managedObjectContext, CoreDataProvider.shared.persistentContainer.viewContext)
     }
 }

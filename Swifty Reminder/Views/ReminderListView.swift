@@ -1,8 +1,8 @@
 //
 //  ReminderListView.swift
-//  Swifty Reminder
+//  RemindersApp
 //
-//  Created by Aman Bind on 18/09/23.
+//  Created by Mohammad Azam on 1/22/23.
 //
 
 import SwiftUI
@@ -12,17 +12,15 @@ struct ReminderListView: View {
     let reminders: FetchedResults<Reminder>
     
     var body: some View {
-        
-        ForEach(reminders) { reminder in
+        List(reminders) { reminder in
             ReminderCellView(reminder: reminder)
         }
-        
-        
     }
 }
 
-//struct ReminderListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ReminderListView()
-//    }
-//}
+/*
+struct ReminderListView_Previews: PreviewProvider {
+    static var previews: some View {
+        ReminderListView()
+    }
+} */

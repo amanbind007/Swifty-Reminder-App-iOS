@@ -1,14 +1,14 @@
 //
 //  MyList+CoreDataClass.swift
-//  Swifty Reminder
+//  RemindersApp
 //
-//  Created by Aman Bind on 16/09/23.
+//  Created by Mohammad Azam on 1/19/23.
 //
 
 import Foundation
 import CoreData
 
 @objc(MyList)
-public class MyList: NSManagedObject{
+public class MyList: NSManagedObject {
     
 }

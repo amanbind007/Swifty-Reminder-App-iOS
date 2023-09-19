@@ -13,7 +13,7 @@ class UIColorTransformer: ValueTransformer {
     override func transformedValue(_ value: Any?) -> Any? {
         guard let color = value as? UIColor else { return nil }
         do {
-            let data = try NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: true) 
+            let data = try NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: true)
             return data
         }catch{
             return nil

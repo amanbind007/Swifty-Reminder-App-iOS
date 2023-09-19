@@ -1,30 +1,27 @@
 //
 //  CoreDataProvider.swift
-//  Swifty Reminder
+//  RemindersApp
 //
-//  Created by Aman Bind on 15/09/23.
+//  Created by Mohammad Azam on 1/19/23.
 //
 
 import Foundation
 import CoreData
 
-class CoreDataProvider{
+class CoreDataProvider {
+    
     static let shared = CoreDataProvider()
-    let persistentContainer : NSPersistentContainer
+    let persistentContainer: NSPersistentContainer
     
-    
-    //It is private so that we cannot new object of it.
-    // And only `shared` will be used (Singleton Design Pattern)
-    private init(){
+    private init() {
         
-        //Registering Transformers we created for the color property
+        // register transformers
         ValueTransformer.setValueTransformer(UIColorTransformer(), forName: NSValueTransformerName("UIColorTransformer"))
-        
         
         persistentContainer = NSPersistentContainer(name: "RemindersModel")
         persistentContainer.loadPersistentStores { description, error in
             if let error {
-                fatalError("Error initializing RemindersModel: \(error)")
+                fatalError("Error initializing RemindersModel \(error)")
             }
         }
         

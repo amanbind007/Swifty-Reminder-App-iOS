@@ -1,8 +1,8 @@
 //
 //  MyList+CoreDataProperties.swift
-//  Swifty Reminder
+//  RemindersApp
 //
-//  Created by Aman Bind on 16/09/23.
+//  Created by Mohammad Azam on 1/19/23.
 //
 
 import Foundation
@@ -10,23 +10,21 @@ import CoreData
 import UIKit
 
 extension MyList {
-    
+
     @nonobjc public class func fetchRequest() -> NSFetchRequest<MyList> {
         return NSFetchRequest<MyList>(entityName: "MyList")
     }
-    
+
     @NSManaged public var name: String
     @NSManaged public var color: UIColor
     @NSManaged public var reminders: NSSet?
-
 }
 
 extension MyList: Identifiable {
     
 }
 
-// MARK: - Generated accessor for notes
-
+// MARK: Generated accessors for notes
 extension MyList {
     
     @objc(addRemindersObject:)
@@ -40,8 +38,4 @@ extension MyList {
 
     @objc(removeReminders:)
     @NSManaged public func removeFromReminders(_ values: NSSet)
-    
-    
-    
 }
-

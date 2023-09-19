@@ -1,8 +1,8 @@
 //
 //  MyListCellView.swift
-//  Swifty Reminder
+//  RemindersApp
 //
-//  Created by Aman Bind on 17/09/23.
+//  Created by Mohammad Azam on 1/20/23.
 //
 
 import SwiftUI
@@ -10,12 +10,11 @@ import SwiftUI
 struct MyListCellView: View {
     
     let myList: MyList
+    
     var body: some View {
-        
-        HStack{
+        HStack {
             Image(systemName: "line.3.horizontal.circle.fill")
-                .foregroundColor(Color(uiColor: myList.color))
-            
+                .foregroundColor(Color(myList.color))
             Text(myList.name)
             Spacer()
             Image(systemName: "chevron.right")
