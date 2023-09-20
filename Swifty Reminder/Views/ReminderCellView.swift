@@ -27,7 +27,8 @@ struct ReminderCellView: View {
             
             Image(systemName: checked ? "circle.inset.filled": "circle")
                 .font(.title2)
-                .opacity(0.4)
+                .opacity(1)
+                .foregroundColor(checked ? Color.green : Color.red)
                 .onTapGesture {
                     checked.toggle()
                 }
