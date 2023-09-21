@@ -43,6 +43,19 @@ struct ReminderDetailView: View {
                             DatePicker("Select Date", selection: $editConfig.reminderTime ?? Date(), displayedComponents: .hourAndMinute)
                         }
                         
+                        Section{
+                            NavigationLink {
+                                Text("Selected List View")
+                            } label: {
+                                HStack{
+                                    Text("List")
+                                    Spacer()
+                                    Text(reminder.list!.name)
+                                }
+                            }
+
+                        }
+                        
                     }
                 }.listStyle(.insetGrouped)
             }.onAppear {
@@ -51,6 +64,8 @@ struct ReminderDetailView: View {
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text("Details")
+                        .font(.headline)
+                        .bold()
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
