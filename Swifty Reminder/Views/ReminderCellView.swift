@@ -7,10 +7,18 @@
 
 import SwiftUI
 
+enum ReminderCellEvents{
+    case onInfo
+    case onCheckChanged(Reminder)
+    case onSelect(Reminder)
+}
+
 struct ReminderCellView: View {
     
     let reminder: Reminder
     @State private var checked: Bool = false
+    
+    let onEvent: (ReminderCellEvents)->Void
     
     private func formatDate(_ date: Date) -> String {
         if date.isToday {
@@ -31,6 +39,7 @@ struct ReminderCellView: View {
                 .foregroundColor(checked ? Color.green : Color.red)
                 .onTapGesture {
                     checked.toggle()
+                    onEvent(.onCheckChanged(reminder))
                 }
             
             VStack(alignment: .leading) {
@@ -54,12 +63,22 @@ struct ReminderCellView: View {
                 .opacity(0.4)
             }
             
+            Spacer()
+            Image(systemName: "info.circle.fill")
+                .onTapGesture {
+                    onEvent(.onInfo)
+                }
+            
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            onEvent(.onSelect(reminder))
         }
     }
 }
 
 struct ReminderCellView_Previews: PreviewProvider {
     static var previews: some View {
-        ReminderCellView(reminder: PreviewData.reminder)
+        ReminderCellView(reminder: PreviewData.reminder, onEvent: { _ in })
     }
 }
