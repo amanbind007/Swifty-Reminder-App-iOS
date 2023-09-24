@@ -24,6 +24,7 @@
 		5C581F6E2AB886D2006F94D1 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C581F6D2AB886D2006F94D1 /* PreviewData.swift */; };
 		5C581F702AB8ACDC006F94D1 /* ReminderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C581F6F2AB8ACDC006F94D1 /* ReminderListView.swift */; };
 		5C581F742AB8B02D006F94D1 /* ReminderCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C581F732AB8B02D006F94D1 /* ReminderCellView.swift */; };
+		5C61B2B82AC0A6A800AE1B2B /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C61B2B72AC0A6A800AE1B2B /* Delay.swift */; };
 		5CA02F012ABB4FF000D196C0 /* ReminderDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA02F002ABB4FF000D196C0 /* ReminderDetailView.swift */; };
 		5CA02F042ABB5B1600D196C0 /* CustomOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA02F032ABB5B1600D196C0 /* CustomOperators.swift */; };
 		5CA02F092ABB5B9200D196C0 /* ReminderEditConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA02F082ABB5B9200D196C0 /* ReminderEditConfig.swift */; };
@@ -70,6 +71,7 @@
 		5C581F6D2AB886D2006F94D1 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		5C581F6F2AB8ACDC006F94D1 /* ReminderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderListView.swift; sourceTree = "<group>"; };
 		5C581F732AB8B02D006F94D1 /* ReminderCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCellView.swift; sourceTree = "<group>"; };
+		5C61B2B72AC0A6A800AE1B2B /* Delay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
 		5CA02F002ABB4FF000D196C0 /* ReminderDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderDetailView.swift; sourceTree = "<group>"; };
 		5CA02F032ABB5B1600D196C0 /* CustomOperators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOperators.swift; sourceTree = "<group>"; };
 		5CA02F082ABB5B9200D196C0 /* ReminderEditConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderEditConfig.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				5CA02F032ABB5B1600D196C0 /* CustomOperators.swift */,
+				5C61B2B72AC0A6A800AE1B2B /* Delay.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				5C581F282AB47EB1006F94D1 /* Swifty_ReminderApp.swift in Sources */,
 				5CA02F092ABB5B9200D196C0 /* ReminderEditConfig.swift in Sources */,
 				5CBC89AA2AB9C4110031A884 /* Date+Extensions.swift in Sources */,
+				5C61B2B82AC0A6A800AE1B2B /* Delay.swift in Sources */,
 				5CA02F012ABB4FF000D196C0 /* ReminderDetailView.swift in Sources */,
 				5C581F5B2AB5CD3F006F94D1 /* MyList+CoreDataProperties.swift in Sources */,
 				5C581F5E2AB5D124006F94D1 /* AddNewListView.swift in Sources */,
