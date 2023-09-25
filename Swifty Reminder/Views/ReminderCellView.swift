@@ -23,6 +23,8 @@ struct ReminderCellView: View {
     
     let onEvent: (ReminderCellEvents)->Void
     
+    let isSelected : Bool
+    
     private func formatDate(_ date: Date) -> String {
         if date.isToday {
             return "Today"
@@ -73,9 +75,11 @@ struct ReminderCellView: View {
             
             Spacer()
             Image(systemName: "info.circle.fill")
+                .opacity(isSelected ? 1.0 : 0.0)
                 .onTapGesture {
                     onEvent(.onInfo)
                 }
+                
             
         }
         .contentShape(Rectangle())
@@ -87,6 +91,6 @@ struct ReminderCellView: View {
 
 struct ReminderCellView_Previews: PreviewProvider {
     static var previews: some View {
-        ReminderCellView(reminder: PreviewData.reminder, onEvent: { _ in })
+        ReminderCellView(reminder: PreviewData.reminder, onEvent: { _ in }, isSelected: true )
     }
 }
