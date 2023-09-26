@@ -21,9 +21,9 @@ struct ReminderCellView: View {
     
     @State private var checked: Bool = false
     
-    let onEvent: (ReminderCellEvents)->Void
-    
     let isSelected : Bool
+    
+    let onEvent: (ReminderCellEvents)->Void
     
     private func formatDate(_ date: Date) -> String {
         if date.isToday {
@@ -91,6 +91,6 @@ struct ReminderCellView: View {
 
 struct ReminderCellView_Previews: PreviewProvider {
     static var previews: some View {
-        ReminderCellView(reminder: PreviewData.reminder, onEvent: { _ in }, isSelected: true )
+        ReminderCellView(reminder: PreviewData.reminder, isSelected: true, onEvent: { _ in } )
     }
 }
