@@ -14,6 +14,10 @@ struct ReminderDetailView: View {
     @Binding var reminder: Reminder
     @State var editConfig: ReminderEditConfig = ReminderEditConfig()
     
+    private var isFormValid: Bool{
+        editConfig.title.trimmingCharacters(in: .whitespaces).isEmpty
+    }
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -30,7 +34,7 @@ struct ReminderDetailView: View {
                         }
                         
                         if editConfig.hasDate {
-
+                            
                             DatePicker("Select Date", selection: $editConfig.reminderDate ?? Date(), displayedComponents: .date)
                         }
                         
@@ -53,9 +57,19 @@ struct ReminderDetailView: View {
                                     Text(reminder.list!.name)
                                 }
                             }
-
+                            
                         }
                         
+                    }
+                    .onChange(of: editConfig.hasDate) { hasDate in
+                        if hasDate {
+                            editConfig.reminderDate = Date()
+                        }
+                    }
+                    .onChange(of: editConfig.hasTime) { hasTime in
+                        if hasTime {
+                            editConfig.reminderTime = Date()
+                        }
                     }
                 }.listStyle(.insetGrouped)
             }.onAppear {
@@ -71,7 +85,17 @@ struct ReminderDetailView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
                         
+                        do{
+                            let _ = try ReminderService.updateReminder(reminder: reminder, editConfig: editConfig)
+                        }
+                        catch{
+                            print(error)
+                        }
+                        
+                        dismiss()
+                        
                     }
+                    .disabled(!isFormValid)
                 }
                 
                 ToolbarItem(placement: .navigationBarLeading) {
