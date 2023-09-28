@@ -54,6 +54,11 @@ class ReminderService {
         return request
     }
     
+    static func deleteReminder(reminder: Reminder) throws {
+        viewContext.delete(reminder)
+        try save()
+    }
+    
     
     
 }
