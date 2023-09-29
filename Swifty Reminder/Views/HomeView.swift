@@ -12,24 +12,41 @@ struct HomeView: View {
     @FetchRequest(sortDescriptors: [])
     private var myListResults: FetchedResults<MyList>
     
+    @FetchRequest(sortDescriptors: [])
+    private var searchResults: FetchedResults<Reminder>
+    
+    @State var search: String = ""
     @State private var isPresented: Bool = false
+    @State private var searching: Bool = false
     
     var body: some View {
         NavigationStack {
             VStack {
+                ScrollView{
+                    MyListView(myLists: myListResults)
+                    
+                    //Spacer()
+                    
+                    Button {
+                        isPresented = true
+                    } label: {
+                        Text("Add List")
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            .font(.headline)
+                    }.padding()
+                }
+            }
+            .onChange(of: search, perform: { searchTerm in
                 
-                MyListView(myLists: myListResults)
-            
-                //Spacer()
+                searching = !searchTerm.trimmingCharacters(in: .whitespaces).isEmpty ? true : false
                 
-                Button {
-                    isPresented = true
-                } label: {
-                    Text("Add List")
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        .font(.headline)
-                }.padding()
-            }.sheet(isPresented: $isPresented) {
+                searchResults.nsPredicate = ReminderService.getRemindersBySearchTerm(searchTerm).predicate
+            })
+            .overlay(alignment: .center, content: {
+                ReminderListView(reminders: searchResults)
+                    .opacity(searching ? 1.0 : 0.0)
+            })
+            .sheet(isPresented: $isPresented) {
                 NavigationView {
                     AddNewListView { name, color in
                         do {
@@ -40,8 +57,11 @@ struct HomeView: View {
                     }
                 }
             }
+            .padding()
+            
         }
-        .padding()
+        .searchable(text: $search)
+        
     }
 }
 

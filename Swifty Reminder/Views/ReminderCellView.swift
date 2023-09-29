@@ -82,6 +82,9 @@ struct ReminderCellView: View {
                 
             
         }
+        .onAppear(perform: {
+            checked = reminder.isCompleted
+        })
         .contentShape(Rectangle())
         .onTapGesture {
             onEvent(.onSelect(reminder))
