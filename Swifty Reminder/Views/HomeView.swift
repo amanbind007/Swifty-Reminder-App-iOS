@@ -36,16 +36,6 @@ struct HomeView: View {
                     }.padding()
                 }
             }
-            .onChange(of: search, perform: { searchTerm in
-                
-                searching = !searchTerm.trimmingCharacters(in: .whitespaces).isEmpty ? true : false
-                
-                searchResults.nsPredicate = ReminderService.getRemindersBySearchTerm(searchTerm).predicate
-            })
-            .overlay(alignment: .center, content: {
-                ReminderListView(reminders: searchResults)
-                    .opacity(searching ? 1.0 : 0.0)
-            })
             .sheet(isPresented: $isPresented) {
                 NavigationView {
                     AddNewListView { name, color in
@@ -57,7 +47,19 @@ struct HomeView: View {
                     }
                 }
             }
+            .listStyle(.plain)
+            .onChange(of: search, perform: { searchTerm in
+                
+                searching = !searchTerm.trimmingCharacters(in: .whitespaces).isEmpty ? true : false
+                
+                searchResults.nsPredicate = ReminderService.getRemindersBySearchTerm(searchTerm).predicate
+            })
+            .overlay(alignment: .center, content: {
+                ReminderListView(reminders: searchResults)
+                    .opacity(searching ? 1.0 : 0.0)
+            })
             .padding()
+            .navigationTitle("Reminders")
             
         }
         .searchable(text: $search)
