@@ -44,13 +44,13 @@ struct HomeView: View {
                         NavigationLink {
                             ReminderListView(reminders: todayResults)
                         } label: {
-                            ReminderStatsView(icon: "calendar", title: "Today", count: reminderStatsValues.todayCount, iconColor: .pink)
+                            ReminderStatsView(icon: "calendar", title: "Today", count: reminderStatsValues.todayCount, iconColor: .red)
                         }
                         
                         NavigationLink {
                            ReminderListView(reminders: scheduledResults)
                         } label: {
-                            ReminderStatsView(icon: "calendar.circle.fill", title: "Scheduled", count: reminderStatsValues.scheduledCount, iconColor: .red)
+                            ReminderStatsView(icon: "calendar.badge.exclamationmark", title: "Scheduled", count: reminderStatsValues.scheduledCount, iconColor: .blue)
                         }
                     }
                     
@@ -61,13 +61,13 @@ struct HomeView: View {
                            ReminderListView(reminders: allResults)
                             
                         } label: {
-                            ReminderStatsView(icon: "tray.circle.fill", title: "All", count: reminderStatsValues.allCount, iconColor: .secondary)
+                            ReminderStatsView(icon: "tray.circle.fill", title: "All", count: reminderStatsValues.allCount, iconColor: .orange)
                         }
                         
                         NavigationLink {
                           ReminderListView(reminders: completedResults)
                         } label: {
-                            ReminderStatsView(icon: "checkmark.circle.fill", title: "Completed", count: reminderStatsValues.completedCount, iconColor: .primary)
+                            ReminderStatsView(icon: "checkmark.circle.fill", title: "Completed", count: reminderStatsValues.completedCount, iconColor: .green)
                         }
                     }
                     
