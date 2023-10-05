@@ -31,6 +31,7 @@
 		5CA02F042ABB5B1600D196C0 /* CustomOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA02F032ABB5B1600D196C0 /* CustomOperators.swift */; };
 		5CA02F092ABB5B9200D196C0 /* ReminderEditConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA02F082ABB5B9200D196C0 /* ReminderEditConfig.swift */; };
 		5CA02F0B2ABCB6E100D196C0 /* SelectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA02F0A2ABCB6E100D196C0 /* SelectListView.swift */; };
+		5CAB3A092ACF143700634047 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAB3A082ACF143700634047 /* NotificationManager.swift */; };
 		5CBC89A72AB9C39F0031A884 /* UIColorTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBC89A62AB9C39F0031A884 /* UIColorTransformer.swift */; };
 		5CBC89AA2AB9C4110031A884 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBC89A92AB9C4110031A884 /* Date+Extensions.swift */; };
 /* End PBXBuildFile section */
@@ -80,6 +81,7 @@
 		5CA02F032ABB5B1600D196C0 /* CustomOperators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOperators.swift; sourceTree = "<group>"; };
 		5CA02F082ABB5B9200D196C0 /* ReminderEditConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderEditConfig.swift; sourceTree = "<group>"; };
 		5CA02F0A2ABCB6E100D196C0 /* SelectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectListView.swift; sourceTree = "<group>"; };
+		5CAB3A082ACF143700634047 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		5CBC89A62AB9C39F0031A884 /* UIColorTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorTransformer.swift; sourceTree = "<group>"; };
 		5CBC89A92AB9C4110031A884 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,6 +132,7 @@
 		5C581F262AB47EB1006F94D1 /* Swifty Reminder */ = {
 			isa = PBXGroup;
 			children = (
+				5CAB3A072ACF13E100634047 /* Managers */,
 				5CA02F022ABB5AF800D196C0 /* Utils */,
 				5CBC89A82AB9C3F30031A884 /* Extension */,
 				5CBC89A52AB9C3880031A884 /* Transformer */,
@@ -214,6 +217,14 @@
 				5CA02F082ABB5B9200D196C0 /* ReminderEditConfig.swift */,
 			);
 			path = EditConfigs;
+			sourceTree = "<group>";
+		};
+		5CAB3A072ACF13E100634047 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				5CAB3A082ACF143700634047 /* NotificationManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		5CBC89A52AB9C3880031A884 /* Transformer */ = {
@@ -384,6 +395,7 @@
 				5C581F592AB5CD15006F94D1 /* MyList+CoreDataClass.swift in Sources */,
 				5C581F532AB49C11006F94D1 /* CoreDataProvider.swift in Sources */,
 				5C581F702AB8ACDC006F94D1 /* ReminderListView.swift in Sources */,
+				5CAB3A092ACF143700634047 /* NotificationManager.swift in Sources */,
 				5C581F682AB73B50006F94D1 /* MyListView.swift in Sources */,
 				5C581F632AB731A0006F94D1 /* ReminderService.swift in Sources */,
 			);
