@@ -9,48 +9,59 @@ import Foundation
 import SwiftUI
 
 
-struct ReminderStatsValue{
+enum ReminderStatType {
+    case today
+    case all
+    case scheduled
+    case completed
+}
+
+struct ReminderStatsValues {
     var todayCount: Int = 0
-    var sheduledCount: Int = 0
+    var scheduledCount: Int = 0
     var allCount: Int = 0
-    var completedCount : Int = 0
-    
+    var completedCount: Int = 0
 }
 
 struct ReminderStatsBuilder {
-    func build(myListResults: FetchedResults<MyList>)-> ReminderStatsValue{
-        let remindersArray = myListResults.map {
-            $0.remindersArray
-        }
-            .reduce([], +)
+    
+    func build(myListResults: FetchedResults<MyList>) -> ReminderStatsValues {
         
-        return ReminderStatsValue()
+        let remindersArray = myListResults.map {
+                            $0.remindersArray
+        }.reduce([], +)
+           
+        let todaysCount = calculateTodaysCount(reminders: remindersArray)
+        let scheduledCount = calculateScheduledCount(reminders: remindersArray)
+        let completedCount = calculateCompletedCount(reminders: remindersArray)
+        let allCount = calculateAllCount(reminders: remindersArray)
+        
+        return ReminderStatsValues(todayCount: todaysCount, scheduledCount: scheduledCount, allCount: allCount, completedCount: completedCount)
     }
     
-    func calculateScheduledCount(reminders: [Reminder])-> Int{
+    private func calculateScheduledCount(reminders: [Reminder]) -> Int {
+        return reminders.reduce(0) { result, reminder in
+            return ((reminder.reminderDate != nil || reminder.reminderTime != nil) && !reminder.isCompleted)  ? result + 1: result
+        }
+    }
+    
+    private func calculateTodaysCount(reminders: [Reminder]) -> Int {
         return reminders.reduce(0) { result, reminder in
             let isToday = reminder.reminderDate?.isToday ?? false
-            return (reminder.isCompleted && reminder.reminderDate != nil && reminder.reminderTime != nil) ? result+1 : result
+            return isToday ? result + 1: result
         }
     }
     
-    func calculateTodaysCount(reminders: [Reminder])-> Int{
+    private func calculateCompletedCount(reminders: [Reminder]) -> Int {
         return reminders.reduce(0) { result, reminder in
-            let isToday = reminder.reminderDate?.isToday ?? false
-            return isToday ? result+1 : result
+            return reminder.isCompleted ? result + 1 : result
         }
     }
     
-    func calculateCompletedCount(reminders: [Reminder])-> Int{
+    private func calculateAllCount(reminders: [Reminder]) -> Int {
         return reminders.reduce(0) { result, reminder in
-            return reminder.isCompleted ? result+1 : result
+            return !reminder.isCompleted ? result + 1 : result
         }
     }
     
-    
-    func calculateAllCount(reminders: [Reminder])-> Int{
-        return reminders.reduce(0) { result, reminder in
-            return !reminder.isCompleted ? result+1 : result
-        }
-    }
 }

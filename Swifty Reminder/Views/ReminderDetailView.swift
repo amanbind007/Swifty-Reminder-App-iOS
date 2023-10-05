@@ -9,13 +9,12 @@ import SwiftUI
 
 struct ReminderDetailView: View {
     
-    
     @Environment(\.dismiss) private var dismiss
     @Binding var reminder: Reminder
     @State var editConfig: ReminderEditConfig = ReminderEditConfig()
     
-    private var isFormValid: Bool{
-        editConfig.title.trimmingCharacters(in: .whitespaces).isEmpty
+    private var isFormValid: Bool {
+        !editConfig.title.isEmpty
     }
     
     var body: some View {
@@ -34,7 +33,6 @@ struct ReminderDetailView: View {
                         }
                         
                         if editConfig.hasDate {
-                            
                             DatePicker("Select Date", selection: $editConfig.reminderDate ?? Date(), displayedComponents: .date)
                         }
                         
@@ -47,26 +45,23 @@ struct ReminderDetailView: View {
                             DatePicker("Select Date", selection: $editConfig.reminderTime ?? Date(), displayedComponents: .hourAndMinute)
                         }
                         
-                        Section{
+                        Section {
                             NavigationLink {
-                                Text("Selected List View")
+                                SelectListView(selectist: $reminder.list)
                             } label: {
-                                HStack{
+                                HStack {
                                     Text("List")
                                     Spacer()
                                     Text(reminder.list!.name)
                                 }
                             }
-                            
+
                         }
-                        
-                    }
-                    .onChange(of: editConfig.hasDate) { hasDate in
+                    }.onChange(of: editConfig.hasDate) { hasDate in
                         if hasDate {
                             editConfig.reminderDate = Date()
                         }
-                    }
-                    .onChange(of: editConfig.hasTime) { hasTime in
+                    }.onChange(of: editConfig.hasTime) { hasTime in
                         if hasTime {
                             editConfig.reminderTime = Date()
                         }
@@ -78,24 +73,17 @@ struct ReminderDetailView: View {
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text("Details")
-                        .font(.headline)
-                        .bold()
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
-                        
-                        do{
-                            let _ = try ReminderService.updateReminder(reminder: reminder, editConfig: editConfig)
-                        }
-                        catch{
-                            print(error)
-                        }
-                        
+                            do {
+                              let _ = try ReminderService.updateReminder(reminder: reminder, editConfig: editConfig)
+                            } catch {
+                                print(error)
+                            }
                         dismiss()
-                        
-                    }
-                    .disabled(!isFormValid)
+                    }.disabled(!isFormValid)
                 }
                 
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -107,7 +95,6 @@ struct ReminderDetailView: View {
         }
     }
 }
-
 
 struct ReminderDetailView_Previews: PreviewProvider {
     static var previews: some View {
