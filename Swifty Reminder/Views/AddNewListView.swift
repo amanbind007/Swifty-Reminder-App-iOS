@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AddNewListView: View {
-    
     @Environment(\.dismiss) private var dismiss
     @State private var name: String = ""
     @State private var selectedColor: Color = .yellow
@@ -21,7 +20,6 @@ struct AddNewListView: View {
     
     var body: some View {
         VStack {
-            
             VStack {
                 Image(systemName: "line.3.horizontal.circle.fill")
                     .foregroundColor(selectedColor)
@@ -51,7 +49,6 @@ struct AddNewListView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
-                        
                         // save the list
                         onSave(name, UIColor(selectedColor))
                         
@@ -65,7 +62,7 @@ struct AddNewListView: View {
 struct AddNewListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AddNewListView(onSave: { (_, _) in })
+            AddNewListView(onSave: { _, _ in })
         }
     }
 }

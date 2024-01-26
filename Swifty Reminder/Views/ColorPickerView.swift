@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct ColorPickerView: View {
+    @Binding var selectedColor: Color
     
-    @Binding var selectedColor : Color
-    
-    let colors : [Color] = [.red, .orange, .yellow, .green, .blue, .purple, .pink]
+    let colors: [Color] = [.red, .orange, .yellow, .green, .blue, .purple, .pink]
     
     var body: some View {
-        HStack{
+        HStack {
             ForEach(colors, id: \.self) { color in
                 Circle()
                     .fill()
@@ -29,21 +28,16 @@ struct ColorPickerView: View {
                         selectedColor = color
                     }
             }
- 
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: 100)
         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-        
     }
 }
 
 struct ColorPickerView_Previews: PreviewProvider {
-
     @State static var color: Color = .red
     static var previews: some View {
         ColorPickerView(selectedColor: $color)
-            
-        
     }
 }

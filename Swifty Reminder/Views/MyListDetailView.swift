@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MyListDetailView: View {
-    
     let myList: MyList
     @State private var openAddReminder: Bool = false
     @State private var title: String = ""
@@ -27,7 +26,6 @@ struct MyListDetailView: View {
     
     var body: some View {
         VStack {
-                
             // Display List of Reminders
             ReminderListView(reminders: reminderResults)
             
@@ -41,7 +39,7 @@ struct MyListDetailView: View {
                 .padding()
         }.alert("New Reminder", isPresented: $openAddReminder) {
             TextField("", text: $title)
-            Button("Cancel", role: .cancel) { }
+            Button("Cancel", role: .cancel) {}
             Button("Done") {
                 if isFormValid {
                     do {

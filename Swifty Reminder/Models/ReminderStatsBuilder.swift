@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 
-
 enum ReminderStatType {
     case today
     case all
@@ -24,11 +23,9 @@ struct ReminderStatsValues {
 }
 
 struct ReminderStatsBuilder {
-    
     func build(myListResults: FetchedResults<MyList>) -> ReminderStatsValues {
-        
         let remindersArray = myListResults.map {
-                            $0.remindersArray
+            $0.remindersArray
         }.reduce([], +)
            
         let todaysCount = calculateTodaysCount(reminders: remindersArray)
@@ -41,27 +38,26 @@ struct ReminderStatsBuilder {
     
     private func calculateScheduledCount(reminders: [Reminder]) -> Int {
         return reminders.reduce(0) { result, reminder in
-            return ((reminder.reminderDate != nil || reminder.reminderTime != nil) && !reminder.isCompleted)  ? result + 1: result
+            ((reminder.reminderDate != nil || reminder.reminderTime != nil) && !reminder.isCompleted) ? result + 1 : result
         }
     }
     
     private func calculateTodaysCount(reminders: [Reminder]) -> Int {
         return reminders.reduce(0) { result, reminder in
             let isToday = reminder.reminderDate?.isToday ?? false
-            return isToday ? result + 1: result
+            return isToday ? result + 1 : result
         }
     }
     
     private func calculateCompletedCount(reminders: [Reminder]) -> Int {
         return reminders.reduce(0) { result, reminder in
-            return reminder.isCompleted ? result + 1 : result
+            reminder.isCompleted ? result + 1 : result
         }
     }
     
     private func calculateAllCount(reminders: [Reminder]) -> Int {
         return reminders.reduce(0) { result, reminder in
-            return !reminder.isCompleted ? result + 1 : result
+            !reminder.isCompleted ? result + 1 : result
         }
     }
-    
 }

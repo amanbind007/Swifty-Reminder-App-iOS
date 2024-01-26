@@ -15,16 +15,15 @@ class Delay {
         self.seconds = seconds
     }
     
-    func performWork(_ work: @escaping ()-> Void){
+    func performWork(_ work: @escaping () -> Void) {
         workItem = DispatchWorkItem(block: {
             work()
         })
         
-        DispatchQueue.main.asyncAfter(deadline: .now()+seconds, execute: workItem!)
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: workItem!)
     }
     
-    func cancel(){
+    func cancel() {
         workItem?.cancel()
     }
-    
 }

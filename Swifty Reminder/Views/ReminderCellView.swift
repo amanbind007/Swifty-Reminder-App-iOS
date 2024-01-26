@@ -7,23 +7,22 @@
 
 import SwiftUI
 
-enum ReminderCellEvents{
+enum ReminderCellEvents {
     case onInfo
     case onCheckChanged(Reminder, Bool)
     case onSelect(Reminder)
 }
 
 struct ReminderCellView: View {
-    
     let reminder: Reminder
     
     let delay = Delay()
     
     @State private var checked: Bool = false
     
-    let isSelected : Bool
+    let isSelected: Bool
     
-    let onEvent: (ReminderCellEvents)->Void
+    let onEvent: (ReminderCellEvents) -> Void
     
     private func formatDate(_ date: Date) -> String {
         if date.isToday {
@@ -37,8 +36,7 @@ struct ReminderCellView: View {
     
     var body: some View {
         HStack {
-            
-            Image(systemName: checked ? "circle.inset.filled": "circle")
+            Image(systemName: checked ? "circle.inset.filled" : "circle")
                 .font(.title2)
                 .opacity(1)
                 .foregroundColor(checked ? Color.green : Color.red)
@@ -49,7 +47,6 @@ struct ReminderCellView: View {
                     delay.performWork {
                         onEvent(.onCheckChanged(reminder, checked))
                     }
-                    
                 }
             
             VStack(alignment: .leading) {
@@ -69,8 +66,8 @@ struct ReminderCellView: View {
                         Text(reminderTime.formatted(date: .omitted, time: .shortened))
                     }
                 }.frame(maxWidth: .infinity, alignment: .leading)
-                .font(.caption)
-                .opacity(0.4)
+                    .font(.caption)
+                    .opacity(0.4)
             }
             
             Spacer()
@@ -79,8 +76,6 @@ struct ReminderCellView: View {
                 .onTapGesture {
                     onEvent(.onInfo)
                 }
-                
-            
         }
         .onAppear(perform: {
             checked = reminder.isCompleted
@@ -94,6 +89,6 @@ struct ReminderCellView: View {
 
 struct ReminderCellView_Previews: PreviewProvider {
     static var previews: some View {
-        ReminderCellView(reminder: PreviewData.reminder, isSelected: true, onEvent: { _ in } )
+        ReminderCellView(reminder: PreviewData.reminder, isSelected: true, onEvent: { _ in })
     }
 }

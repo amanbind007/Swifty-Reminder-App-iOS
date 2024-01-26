@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HomeView: View {
-    
     @FetchRequest(sortDescriptors: [])
     private var myListResults: FetchedResults<MyList>
     
@@ -27,7 +26,7 @@ struct HomeView: View {
     @FetchRequest(fetchRequest: ReminderService.remindersByStatType(statType: .completed))
     private var completedResults: FetchedResults<Reminder>
     
-    @State var search: String = ""
+    @State private var search: String = ""
     @State private var isPresented: Bool = false
     @State private var searching: Bool = false
     
@@ -38,9 +37,7 @@ struct HomeView: View {
         NavigationStack {
             VStack {
                 ScrollView {
-                    
                     HStack {
-                        
                         NavigationLink {
                             ReminderListView(reminders: todayResults)
                         } label: {
@@ -48,24 +45,22 @@ struct HomeView: View {
                         }
                         
                         NavigationLink {
-                           ReminderListView(reminders: scheduledResults)
+                            ReminderListView(reminders: scheduledResults)
                         } label: {
                             ReminderStatsView(icon: "calendar.badge.exclamationmark", title: "Scheduled", count: reminderStatsValues.scheduledCount, iconColor: .blue)
                         }
                     }
                     
                     HStack {
-                       
                         NavigationLink {
-                            
-                           ReminderListView(reminders: allResults)
+                            ReminderListView(reminders: allResults)
                             
                         } label: {
                             ReminderStatsView(icon: "tray.circle.fill", title: "All", count: reminderStatsValues.allCount, iconColor: .orange)
                         }
                         
                         NavigationLink {
-                          ReminderListView(reminders: completedResults)
+                            ReminderListView(reminders: completedResults)
                         } label: {
                             ReminderStatsView(icon: "checkmark.circle.fill", title: "Completed", count: reminderStatsValues.completedCount, iconColor: .green)
                         }
@@ -86,10 +81,9 @@ struct HomeView: View {
                             .frame(maxWidth: .infinity, alignment: .trailing)
                             .font(.headline)
                     }.padding()
-                    
                 }
             }
-           .sheet(isPresented: $isPresented) {
+            .sheet(isPresented: $isPresented) {
                 NavigationView {
                     AddNewListView { name, color in
                         do {
@@ -102,12 +96,12 @@ struct HomeView: View {
             }
             .listStyle(.plain)
             .onChange(of: search, perform: { searchTerm in
-                searching = !searchTerm.isEmpty ? true: false
+                searching = !searchTerm.isEmpty ? true : false
                 searchResults.nsPredicate = ReminderService.getRemindersBySearchTerm(search).predicate
             })
             .overlay(alignment: .center, content: {
                 ReminderListView(reminders: searchResults)
-                    .opacity(searching ? 1.0: 0.0)
+                    .opacity(searching ? 1.0 : 0.0)
             })
             .onAppear {
                 reminderStatsValues = reminderStats.build(myListResults: myListResults)
@@ -115,7 +109,6 @@ struct HomeView: View {
             .padding()
             .navigationTitle("Reminders")
         }.searchable(text: $search)
-       
     }
 }
 

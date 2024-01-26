@@ -5,37 +5,34 @@
 //  Created by Mohammad Azam on 1/19/23.
 //
 
-import Foundation
 import CoreData
+import Foundation
 import UIKit
 
-extension MyList {
-
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<MyList> {
+public extension MyList {
+    @nonobjc class func fetchRequest() -> NSFetchRequest<MyList> {
         return NSFetchRequest<MyList>(entityName: "MyList")
     }
 
-    @NSManaged public var name: String
-    @NSManaged public var color: UIColor
-    @NSManaged public var reminders: NSSet?
+    @NSManaged var name: String
+    @NSManaged var color: UIColor
+    @NSManaged var reminders: NSSet?
 }
 
-extension MyList: Identifiable {
-    
-}
+extension MyList: Identifiable {}
 
 // MARK: Generated accessors for notes
-extension MyList {
-    
+
+public extension MyList {
     @objc(addRemindersObject:)
-    @NSManaged public func addToReminders(_ value: Reminder)
+    @NSManaged func addToReminders(_ value: Reminder)
 
     @objc(removeRemindersObject:)
-    @NSManaged public func removeFromReminders(_ value: Reminder)
+    @NSManaged func removeFromReminders(_ value: Reminder)
 
     @objc(addReminders:)
-    @NSManaged public func addToReminders(_ values: NSSet)
+    @NSManaged func addToReminders(_ values: NSSet)
 
     @objc(removeReminders:)
-    @NSManaged public func removeFromReminders(_ values: NSSet)
+    @NSManaged func removeFromReminders(_ values: NSSet)
 }

@@ -8,44 +8,41 @@
 import SwiftUI
 
 struct ReminderListView: View {
-    
     @State private var selectedReminder: Reminder?
     @State private var showReminderDetailView: Bool = false
     let reminders: FetchedResults<Reminder>
     
-    private func reminderCheckChanged(reminder: Reminder, isCompleted: Bool){
+    private func reminderCheckChanged(reminder: Reminder, isCompleted: Bool) {
         var editConfig = ReminderEditConfig(reminder: reminder)
         editConfig.isCompleted = isCompleted
         
-        do{
+        do {
             let _ = try ReminderService.updateReminder(reminder: reminder, editConfig: editConfig)
-        }catch{
+        } catch {
             print(error.localizedDescription)
-            
         }
     }
     
-    private func isReminderSelected(_ reminder: Reminder)->Bool{
+    private func isReminderSelected(_ reminder: Reminder) -> Bool {
         selectedReminder?.objectID == reminder.objectID
     }
     
-    private func deleteReminder(_ indexSet: IndexSet){
+    private func deleteReminder(_ indexSet: IndexSet) {
         indexSet.forEach { index in
             let reminder = reminders[index]
-            do{
-                try ReminderService.deleteReminder(reminder: reminder)
-            }
-            catch{
+            do {
+                try ReminderService.deleteReminder(reminder)
+            } catch {
                 print(error.localizedDescription)
             }
         }
     }
     
     var body: some View {
-        VStack{
-            List{
+        VStack {
+            List {
                 ForEach(reminders) { reminder in
-                    ReminderCellView(reminder: reminder, isSelected: isReminderSelected(reminder)){ event in
+                    ReminderCellView(reminder: reminder, isSelected: isReminderSelected(reminder)) { event in
                         
                         switch event {
                         case .onSelect(let reminder):
@@ -58,11 +55,8 @@ struct ReminderListView: View {
                             showReminderDetailView = true
                         }
                     }
-                    
                 }
-                .onDelete(perform: { indexSet in
-                    deleteReminder(indexSet)
-                })
+                .onDelete(perform: deleteReminder)
             }
         }
         .sheet(isPresented: $showReminderDetailView, content: {
@@ -71,11 +65,8 @@ struct ReminderListView: View {
     }
 }
 
-
 struct ReminderListView_Previews: PreviewProvider {
-    
-    private struct ReminderListViewContainer: View{
-        
+    private struct ReminderListViewContainer: View {
         @FetchRequest(sortDescriptors: []) private var reminder: FetchedResults<Reminder>
         
         var body: some View {

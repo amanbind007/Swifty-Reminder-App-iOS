@@ -13,11 +13,10 @@ struct UserData {
     let body: String?
     let time: Date?
     let date: Date?
-    
 }
 
-class NotificationManager {
-    static func scheduleNotification(userData: UserData){
+enum NotificationManager {
+    static func scheduleNotification(userData: UserData) {
         let content = UNMutableNotificationContent()
         content.title = userData.title ?? ""
         content.body = userData.body ?? ""
@@ -31,23 +30,21 @@ class NotificationManager {
         }
         
         let trigger = UNCalendarNotificationTrigger(
-                 dateMatching: dateComponents, repeats: true)
-        
+            dateMatching: dateComponents, repeats: true)
         
         let uuidString = UUID().uuidString
     
         let request = UNNotificationRequest(identifier: uuidString,
-                    content: content, trigger: trigger)
+                                            content: content, trigger: trigger)
         
         let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.add(request) { (error) in
-           if error != nil {
-              // Handle any errors.
-           }
-            else{
+        notificationCenter.add(request) { error in
+            if error != nil {
+                // Handle any errors.
+            }
+            else {
                 print("Reminder Added")
             }
         }
-        
     }
 }

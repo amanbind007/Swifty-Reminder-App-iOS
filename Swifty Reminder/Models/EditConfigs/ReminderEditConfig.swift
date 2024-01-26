@@ -15,9 +15,9 @@ struct ReminderEditConfig {
     var hasTime: Bool = false
     var reminderDate: Date?
     var reminderTime: Date?
-    
-    init() { }
-    
+
+    init() {}
+
     init(reminder: Reminder) {
         title = reminder.title ?? ""
         notes = reminder.notes

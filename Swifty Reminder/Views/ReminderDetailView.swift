@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct ReminderDetailView: View {
-    
     @Environment(\.dismiss) private var dismiss
     @Binding var reminder: Reminder
-    @State var editConfig: ReminderEditConfig = ReminderEditConfig()
+    @State var editConfig: ReminderEditConfig = .init()
     
     private var isFormValid: Bool {
         !editConfig.title.isEmpty
@@ -47,7 +46,7 @@ struct ReminderDetailView: View {
                         
                         Section {
                             NavigationLink {
-                                SelectListView(selectist: $reminder.list)
+                                SelectListView(selectedList: $reminder.list)
                             } label: {
                                 HStack {
                                     Text("List")
@@ -55,7 +54,6 @@ struct ReminderDetailView: View {
                                     Text(reminder.list!.name)
                                 }
                             }
-
                         }
                     }.onChange(of: editConfig.hasDate) { hasDate in
                         if hasDate {
@@ -77,18 +75,18 @@ struct ReminderDetailView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
-                            do {
-                                let updated = try ReminderService.updateReminder(reminder: reminder, editConfig: editConfig)
+                        do {
+                            let updated = try ReminderService.updateReminder(reminder: reminder, editConfig: editConfig)
                                 
-                                if updated {
-                                    if reminder.reminderDate != nil || reminder.reminderTime != nil {
-                                        let userData = UserData(title: reminder.title, body: reminder.notes, time: reminder.reminderTime, date: reminder.reminderDate)
-                                        NotificationManager.scheduleNotification(userData: userData)
-                                    }
+                            if updated {
+                                if reminder.reminderDate != nil || reminder.reminderTime != nil {
+                                    let userData = UserData(title: reminder.title, body: reminder.notes, time: reminder.reminderTime, date: reminder.reminderDate)
+                                    NotificationManager.scheduleNotification(userData: userData)
                                 }
-                            } catch {
-                                print(error)
                             }
+                        } catch {
+                            print(error)
+                        }
                         dismiss()
                     }.disabled(!isFormValid)
                 }

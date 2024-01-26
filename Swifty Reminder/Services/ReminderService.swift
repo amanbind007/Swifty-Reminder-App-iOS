@@ -1,16 +1,15 @@
 //
 //  ReminderService.swift
-//  RemindersApp
+//  Swifty Reminder
 //
-//  Created by Mohammad Azam on 1/20/23.
+//  Created by Aman Bind on 17/09/23.
 //
 
-import Foundation
 import CoreData
+import Foundation
 import UIKit
 
 class ReminderService {
-    
     static var viewContext: NSManagedObjectContext {
         CoreDataProvider.shared.persistentContainer.viewContext
     }
@@ -26,7 +25,7 @@ class ReminderService {
         try save()
     }
     
-    static func updateReminder(reminder: Reminder, editConfig: ReminderEditConfig) throws -> Bool{
+    static func updateReminder(reminder: Reminder, editConfig: ReminderEditConfig) throws -> Bool {
         let reminderToUpdate = reminder
         reminderToUpdate.isCompleted = editConfig.isCompleted
         reminderToUpdate.title = editConfig.title
@@ -35,21 +34,29 @@ class ReminderService {
         reminderToUpdate.reminderTime = editConfig.hasTime ? editConfig.reminderTime : nil
         
         try save()
-        
         return true
-        
+    }
+    
+    static func deleteReminder(_ reminder: Reminder) throws {
+        viewContext.delete(reminder)
+        try save()
+    }
+    
+    static func getRemindersBySearchTerm(_ searchTerm: String) -> NSFetchRequest<Reminder> {
+        let request = Reminder.fetchRequest()
+        request.sortDescriptors = []
+        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchTerm)
+        return request
     }
     
     static func saveReminderToMyList(myList: MyList, reminderTitle: String) throws {
         let reminder = Reminder(context: viewContext)
         reminder.title = reminderTitle
         myList.addToReminders(reminder)
-        try save() 
+        try save()
     }
     
-
     static func remindersByStatType(statType: ReminderStatType) -> NSFetchRequest<Reminder> {
-        
         let request = Reminder.fetchRequest()
         request.sortDescriptors = []
         
@@ -67,7 +74,6 @@ class ReminderService {
         }
         
         return request
-        
     }
     
     static func getRemindersByList(myList: MyList) -> NSFetchRequest<Reminder> {
@@ -76,19 +82,4 @@ class ReminderService {
         request.predicate = NSPredicate(format: "list = %@ AND isCompleted = false", myList)
         return request
     }
-    
-    static func deleteReminder(reminder: Reminder) throws {
-        viewContext.delete(reminder)
-        try save()
-    }
-    
-    static func getRemindersBySearchTerm(_ searchTerm: String) -> NSFetchRequest<Reminder> {
-        let request = Reminder.fetchRequest()
-        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchTerm)
-        return request
-        
-    }
-    
-    
-    
 }
