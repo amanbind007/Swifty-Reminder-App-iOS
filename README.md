@@ -5,9 +5,9 @@
 ![Swift](https://img.shields.io/badge/Language-Swift-FF5733)
 ![SwiftUI](https://img.shields.io/badge/Interface-SwfitUI-red)
 ![Architecture](https://img.shields.io/badge/Architecture-MVVM-green)
-![GitHub forks](https://img.shields.io/github/forks/amanbind007/Drawing-Guesser-iOS?label=Fork&style=social)
-![GitHub Stars](https://img.shields.io/github/stars/amanbind007/Drawing-Guesser-iOS?label=Stars&style=social)
-![GitHub Watchers](https://img.shields.io/github/watchers/amanbind007/Drawing-Guesser-iOS?label=Watchers&style=social)
+![GitHub forks](https://img.shields.io/github/forks/amanbind007/Swifty-Reminder-App-iOS?label=Fork&style=social)
+![GitHub Stars](https://img.shields.io/github/stars/amanbind007/Swifty-Reminder-App-iOS?label=Stars&style=social)
+![GitHub Watchers](https://img.shields.io/github/watchers/amanbind007/Swifty-Reminder-App-iOS?label=Watchers&style=social)
 
 ### Libraries & Tools
 ![Core Data](https://img.shields.io/badge/Core_Data-DE3163)
