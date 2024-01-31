@@ -45,8 +45,8 @@ Swifty Reminder is a clone of the iOS inbuilt reminder app. It is created to lea
     <th>Creating New Item in List</th>
   </tr>
   <tr>
-    <td><video src='https://github.com/amanbind007/Swifty-Reminder-App-iOS/blob/main/Screenshots/Recordings/creating_new_list.mp4?raw=true' width=180/></td> 
-    <td><video src='https://github.com/amanbind007/Swifty-Reminder-App-iOS/blob/main/Screenshots/Recordings/creating_item_in_a_list.mp4?raw=true' width=180/></td> 
+    <td><video src="https://github.com/amanbind007/Swifty-Reminder-App-iOS/assets/75306571/34c16f95-df39-4b23-a7ae-bd971ff3f3a2" width="180" /></td> 
+    <td><video src="https://github.com/amanbind007/Swifty-Reminder-App-iOS/assets/75306571/d0c5499b-2ab1-4142-99dc-9a5e86f5c7c8" width="180"/></td> 
   </tr>
   
   <tr>
@@ -54,8 +54,8 @@ Swifty Reminder is a clone of the iOS inbuilt reminder app. It is created to lea
     <th>Searching for an Item</th>
   </tr>
   <tr>
-    <td><video src='https://github.com/amanbind007/Swifty-Reminder-App-iOS/blob/main/Screenshots/Recordings/editing_and_scheduling_a_list_for_reminder.mp4?raw=true' width=180/></td> 
-    <td><video src='https://github.com/amanbind007/Swifty-Reminder-App-iOS/blob/main/Screenshots/Recordings/searching_for_an_item.mp4?raw=true' width=180/></td> 
+    <td><video src="https://github.com/amanbind007/Swifty-Reminder-App-iOS/assets/75306571/063ff47b-8f1b-47b6-8404-f8b487096be6" width="180" /></td> 
+    <td><video src="https://github.com/amanbind007/Swifty-Reminder-App-iOS/assets/75306571/4bf0c077-6881-4cca-af0b-da779fda0b96" width="180"/></td> 
   </tr>
   
   <tr>
@@ -63,8 +63,8 @@ Swifty Reminder is a clone of the iOS inbuilt reminder app. It is created to lea
     <th>Reminder Notification</th>
   </tr>
   <tr>
-    <td><video src='https://github.com/amanbind007/Swifty-Reminder-App-iOS/blob/main/Screenshots/Recordings/marking_item_as_complete.mp4?raw=true' width=180/></td> 
-    <td><video src='https://github.com/amanbind007/Swifty-Reminder-App-iOS/blob/main/Screenshots/Recordings/reminder_notification.mp4?raw=true' width=180/></td> 
+    <td><video src="https://github.com/amanbind007/Swifty-Reminder-App-iOS/assets/75306571/e7fa9fbc-7b78-4da7-ab5d-8687627cd275" width="180" /></td> 
+    <td><video src="https://github.com/amanbind007/Swifty-Reminder-App-iOS/assets/75306571/46b1de60-7afa-471c-b8bd-a81b23eb1c5e" width="180" /></td> 
   </tr>
 </table>
 
@@ -121,6 +121,10 @@ Before you open a issue or report a bug, please check if the issue or bug is rel
 
 ## 📱 Contact
 
-Have an project? DM me at 👇
+Have a project? DM me at 👇
+LinkedIn:- <a href="https://www.linkedin.com/in/amanbind/" >Aman Bind<a/>
+
 
 Drop a mail to:- amanbind007@gmail.com
+
+
