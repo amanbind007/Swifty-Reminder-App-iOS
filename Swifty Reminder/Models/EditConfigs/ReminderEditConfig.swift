@@ -15,6 +15,7 @@ struct ReminderEditConfig {
     var hasTime: Bool = false
     var reminderDate: Date?
     var reminderTime: Date?
+    var list: MyList?
 
     init() {}
 
@@ -26,5 +27,6 @@ struct ReminderEditConfig {
         reminderTime = reminder.reminderTime
         hasDate = reminder.reminderDate != nil
         hasTime = reminder.reminderTime != nil
+        list = reminder.list
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct ColorPickerView: View {
     @Binding var selectedColor: Color
     
-    let colors: [Color] = [.red, .orange, .yellow, .green, .blue, .purple, .pink]
+    let colors: [Color] = [.pumpkin, .ember, .candleGlow, .bloodRed, .witchPurple, .slimeGreen, .boneWhite]
     
     var body: some View {
         HStack {
@@ -22,7 +22,7 @@ struct ColorPickerView: View {
                     .overlay {
                         Circle()
                             .stroke(lineWidth: 3)
-                            .foregroundColor(selectedColor == color ? .gray : .clear)
+                            .foregroundColor(selectedColor == color ? .boneWhite : .clear)
                     }
                     .onTapGesture {
                         selectedColor = color
@@ -36,7 +36,7 @@ struct ColorPickerView: View {
 }
 
 struct ColorPickerView_Previews: PreviewProvider {
-    @State static var color: Color = .red
+    @State static var color: Color = .pumpkin
     static var previews: some View {
         ColorPickerView(selectedColor: $color)
     }

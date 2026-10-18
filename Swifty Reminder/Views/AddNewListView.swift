@@ -10,7 +10,7 @@ import SwiftUI
 struct AddNewListView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var name: String = ""
-    @State private var selectedColor: Color = .yellow
+    @State private var selectedColor: Color = .pumpkin
     
     let onSave: (String, UIColor) -> Void
     
@@ -21,9 +21,9 @@ struct AddNewListView: View {
     var body: some View {
         VStack {
             VStack {
-                Image(systemName: "line.3.horizontal.circle.fill")
-                    .foregroundColor(selectedColor)
-                    .font(.system(size: 100))
+                // A new list starts with nothing to do, so its pumpkin is lit
+                PumpkinBadge(color: selectedColor)
+                    .frame(width: 110, height: 110)
                 TextField("List Name", text: $name)
                     .multilineTextAlignment(.center)
                     .textFieldStyle(.roundedBorder)
@@ -35,10 +35,12 @@ struct AddNewListView: View {
             
             Spacer()
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.midnight.ignoresSafeArea())
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text("New List")
                         .font(.headline)
+                        .foregroundColor(.pumpkin)
                 }
                 
                 ToolbarItem(placement: .navigationBarLeading) {

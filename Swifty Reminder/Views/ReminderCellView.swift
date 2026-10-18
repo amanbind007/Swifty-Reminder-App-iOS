@@ -35,11 +35,13 @@ struct ReminderCellView: View {
     }
     
     var body: some View {
+        let haunt = checked ? HauntLevel.calm : reminder.hauntLevel()
+
         HStack {
             Image(systemName: checked ? "circle.inset.filled" : "circle")
                 .font(.title2)
                 .opacity(1)
-                .foregroundColor(checked ? Color.green : Color.red)
+                .foregroundColor(checked ? Color.candleGlow : Color.pumpkin)
                 .onTapGesture {
                     checked.toggle()
                     
@@ -50,7 +52,12 @@ struct ReminderCellView: View {
                 }
             
             VStack(alignment: .leading) {
-                Text(reminder.title ?? "")
+                HStack(spacing: 6) {
+                    Text(reminder.title ?? "")
+                    if haunt >= .ghost {
+                        GhostPerch(seed: reminder.hauntSeed)
+                    }
+                }
                 if let notes = reminder.notes, !notes.isEmpty {
                     Text(notes)
                         .opacity(0.4)
@@ -65,13 +72,20 @@ struct ReminderCellView: View {
                     if let reminderTime = reminder.reminderTime {
                         Text(reminderTime.formatted(date: .omitted, time: .shortened))
                     }
+
+                    if haunt > .calm {
+                        Text("Overdue")
+                    }
                 }.frame(maxWidth: .infinity, alignment: .leading)
                     .font(.caption)
-                    .opacity(0.4)
+                    .foregroundColor(haunt > .calm ? Color.ember : nil)
+                    .opacity(haunt > .calm ? 0.9 : 0.4)
             }
+            .modifier(Haunted(level: haunt, seed: reminder.hauntSeed))
             
             Spacer()
             Image(systemName: "info.circle.fill")
+                .foregroundColor(.pumpkin)
                 .opacity(isSelected ? 1.0 : 0.0)
                 .onTapGesture {
                     onEvent(.onInfo)

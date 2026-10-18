@@ -16,6 +16,7 @@ class ReminderService {
     
     static func save() throws {
         try viewContext.save()
+        WidgetUpdater.refresh()
     }
     
     static func saveMyList(_ name: String, _ color: UIColor) throws {
@@ -32,12 +33,19 @@ class ReminderService {
         reminderToUpdate.notes = editConfig.notes
         reminderToUpdate.reminderDate = editConfig.hasDate ? editConfig.reminderDate : nil
         reminderToUpdate.reminderTime = editConfig.hasTime ? editConfig.reminderTime : nil
+        if let list = editConfig.list {
+            reminderToUpdate.list = list
+        }
         
         try save()
+        NotificationManager.updateNotification(for: reminderToUpdate)
+        RemindersSyncManager.updateAppleReminder(for: reminderToUpdate)
         return true
     }
     
     static func deleteReminder(_ reminder: Reminder) throws {
+        NotificationManager.cancelNotification(for: reminder)
+        RemindersSyncManager.deleteAppleReminder(for: reminder)
         viewContext.delete(reminder)
         try save()
     }
@@ -54,6 +62,7 @@ class ReminderService {
         reminder.title = reminderTitle
         myList.addToReminders(reminder)
         try save()
+        RemindersSyncManager.updateAppleReminder(for: reminder)
     }
     
     static func remindersByStatType(statType: ReminderStatType) -> NSFetchRequest<Reminder> {
@@ -64,7 +73,8 @@ class ReminderService {
             case .all:
                 request.predicate = NSPredicate(format: "isCompleted = false")
             case .today:
-                let today = Date()
+                // The whole calendar day, matching the Today count; HomeView refreshes this when the day changes
+                let today = Calendar.current.startOfDay(for: Date())
                 let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)
                 request.predicate = NSPredicate(format: "(reminderDate >= %@) AND (reminderDate < %@)", today as NSDate, tomorrow! as NSDate)
             case .scheduled:

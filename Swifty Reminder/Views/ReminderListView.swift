@@ -57,7 +57,10 @@ struct ReminderListView: View {
                     }
                 }
                 .onDelete(perform: deleteReminder)
+                .listRowBackground(Color.cauldron)
             }
+            .scrollContentBackground(.hidden)
+            .background(Color.midnight)
         }
         .sheet(isPresented: $showReminderDetailView, content: {
             ReminderDetailView(reminder: Binding($selectedReminder)!)

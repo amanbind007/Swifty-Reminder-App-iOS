@@ -15,8 +15,8 @@ struct SelectListView: View {
         List(myListsFetchResults) { myList in
             HStack {
                 HStack {
-                    Image(systemName: "line.3.horizontal.circle.fill")
-                        .foregroundColor(Color(myList.color))
+                    ListPumpkinIcon(myList: myList)
+                        .frame(width: 30, height: 30)
                     Text(myList.name)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -29,6 +29,7 @@ struct SelectListView: View {
 
                 if selectedList == myList {
                     Image(systemName: "checkmark")
+                        .foregroundColor(.pumpkin)
                 }
             }
         }

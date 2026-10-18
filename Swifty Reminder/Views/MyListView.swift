@@ -9,8 +9,7 @@ import SwiftUI
 
 struct MyListView: View {
     let myLists: FetchedResults<MyList>
-    @Environment(\.colorScheme) var colorScheme
-    
+
     var body: some View {
         NavigationStack {
             if myLists.isEmpty {
@@ -24,11 +23,12 @@ struct MyListView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding([.leading], 10)
                                 .font(.title3)
-                                .foregroundColor(colorScheme == .dark ? Color.offWhite : Color.darkGray)
+                                .foregroundColor(.boneWhite)
                             Divider()
+                                .overlay(Color.pumpkin.opacity(0.3))
                         }
                     }
-                    .listRowBackground(colorScheme == .dark ? Color.darkGray : Color.offWhite)
+                    .listRowBackground(Color.cauldron)
                 }.scrollContentBackground(.hidden)
                     .navigationDestination(for: MyList.self) { myList in
                         MyListDetailView(myList: myList)
